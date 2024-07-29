@@ -1,14 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReadInputDataFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property sap2010:Annotation.AnnotationText="This variable can be used in case transactions are stored in a DataTable (for example, after being retrieved from a spreadsheet)." Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
-    <x:Property sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Name="in_TransactionNumber" Type="InArgument(x:Int32)" />
-  </x:Members>
-  <VisualBasic.Settings>
-    <x:Null />
-  </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1473,720</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>ReadInputDataFile_1</sap2010:WorkflowViewState.IdRef>
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadInputDataFile" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1171,1762" sap2010:WorkflowViewState.IdRef="ReadInputDataFile_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -54,6 +44,7 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -113,13 +104,15 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadInputDataTable" sap:VirtualizedContainerService.HintSize="416,655" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence DisplayName="ReadInputDataOla" sap:VirtualizedContainerService.HintSize="416,1697" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Object" Name="ExtractedData" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_ExtractedData" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ExistingItems" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_TransactionData" />
+      <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ExistingUberItems" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,8 +120,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="All" QueueName="[in_Config(&quot;OrchestratorQueueOla&quot;).ToString]" Result="[ExistingItems]" />
-    <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[ExistingItems]" />
-    <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="354,217" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[io_dt_TransactionData]" QueueName="[in_Config(&quot;OrchestratorQueueOla&quot;).ToString]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_TransactionData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="354,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Input" WorkbookPath="Data\Input\Route Tracker-Input.xlsx" />
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="All" QueueName="OlaData" Result="[ExistingItems]" />
+    <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[ExistingItems]" />
+    <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,226" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[dt_TransactionData]" QueueName="OlaData" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Data items added to the OLA queue&quot;]" />
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="All" QueueName="UberData" Result="[ExistingUberItems]" />
+    <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_2" QueueItems="[ExistingUberItems]" />
+    <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" FolderPath="Training" sap:VirtualizedContainerService.HintSize="354,226" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_2" QueueItemsDataTable="[dt_TransactionData]" QueueName="UberData" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Data items added to the Uber queue&quot;]" />
   </Sequence>
 </Activity>
