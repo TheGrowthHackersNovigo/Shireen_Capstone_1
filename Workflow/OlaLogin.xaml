@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>865,873</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2904,5784</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,27 +121,27 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OlaLogin" sap:VirtualizedContainerService.HintSize="649,808" sap2010:WorkflowViewState.IdRef="Sequence_35">
+  <Sequence DisplayName="OlaLogin" sap:VirtualizedContainerService.HintSize="2914,5719" sap2010:WorkflowViewState.IdRef="Sequence_35">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="587,720" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="2852,5631" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,480" sap2010:WorkflowViewState.IdRef="Sequence_34">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="2818,5391" sap2010:WorkflowViewState.IdRef="Sequence_34">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'We need your location'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'We need your location'" sap:VirtualizedContainerService.HintSize="2756,57" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears : Enable Location" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_24">
                   <sap:WorkflowViewStateService.ViewState>
@@ -176,7 +176,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NCheckState DisplayName="Check App State 'Allow Push'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_11" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Allow Push'" sap:VirtualizedContainerService.HintSize="2756,57" sap2010:WorkflowViewState.IdRef="NCheckState_11" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_36">
                   <sap:WorkflowViewStateService.ViewState>
@@ -211,7 +211,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NCheckState DisplayName="Check App State 'book.olacabs.com wants'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_12" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'book.olacabs.com wants'" sap:VirtualizedContainerService.HintSize="2756,57" sap2010:WorkflowViewState.IdRef="NCheckState_12" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_38">
                   <sap:WorkflowViewStateService.ViewState>
@@ -247,9 +247,9 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NCheckState DisplayName="Check App State 'LOG IN'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NCheckState_17" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'LOG IN'" sap:VirtualizedContainerService.HintSize="2756,57" sap2010:WorkflowViewState.IdRef="NCheckState_17" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_52">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -259,7 +259,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,573" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,575" sap2010:WorkflowViewState.IdRef="Sequence_53">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -288,10 +288,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="354,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="[in_Config(&quot;OlaUrl&quot;).ToString]" Version="V3" />
-            <uix:NCheckState DisplayName="Check App State 'OLA-HOME'" sap:VirtualizedContainerService.HintSize="354,50" sap2010:WorkflowViewState.IdRef="NCheckState_10" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="2756,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="[in_Config(&quot;OlaUrl&quot;).ToString]" Version="V3" />
+            <uix:NCheckState DisplayName="Check App State 'OLA-HOME'" sap:VirtualizedContainerService.HintSize="2756,4959" sap2010:WorkflowViewState.IdRef="NCheckState_10" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="2252,4713" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="2252,4677" sap2010:WorkflowViewState.IdRef="Sequence_32">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -303,9 +303,9 @@
                       <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8355584" CVScreenId="19812f0d-1c88-47a3-835f-75d1f021154d" CvTextArea="501, 113, 42, 12" CvTextArgument="LOG IN" CvType="Text" DesignTimeRectangle="487, 95, 71, 47" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='login' shadowhostid='' tag='SPAN' innertext='                     LOG IN                 ' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='login' shadowhostid='' tag='SPAN' innertext='                     LOG IN                 ' type='' class='' aaname='                     LOG IN                 ' check:text='LOG IN' /&gt;" Guid="02f95260-8b0e-48e7-8ae8-6e46cc3996aa" InformativeScreenshot="1f84f81128ae0a9b026f0f8edf28b8c5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <uix:NCheckState DisplayName="Check App State 'Phone number and OTP'" sap:VirtualizedContainerService.HintSize="2190,4320" sap2010:WorkflowViewState.IdRef="NCheckState_9" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                  <uix:NCheckState DisplayName="Check App State 'Phone number and OTP'" sap:VirtualizedContainerService.HintSize="2190,4284" sap2010:WorkflowViewState.IdRef="NCheckState_9" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1686,4078" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1686,4042" sap2010:WorkflowViewState.IdRef="Sequence_30">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -404,9 +404,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NCheckState>
-                        <uix:NCheckState DisplayName="Check App State 'Verify and'" sap:VirtualizedContainerService.HintSize="1624,2271" sap2010:WorkflowViewState.IdRef="NCheckState_8" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Double.Parse(in_Config(&quot;TimeOut&quot;).ToString())]" Version="V3">
+                        <uix:NCheckState DisplayName="Check App State 'Verify and'" sap:VirtualizedContainerService.HintSize="1624,2235" sap2010:WorkflowViewState.IdRef="NCheckState_8" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Double.Parse(in_Config(&quot;TimeOut&quot;).ToString())]" Version="V3">
                           <uix:NCheckState.IfExists>
-                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1120,2029" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1120,1993" sap2010:WorkflowViewState.IdRef="Sequence_28">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="MailOlaOtp" />
                                 <Variable x:TypeArguments="x:String" Name="OTP" />
@@ -416,10 +416,10 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1058,1939" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+                              <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1058,1903" sap2010:WorkflowViewState.IdRef="RetryScope_1">
                                 <ui:RetryScope.ActivityBody>
                                   <ActivityAction>
-                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="1016,1739" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="1016,1703" sap2010:WorkflowViewState.IdRef="Sequence_48">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -465,28 +465,18 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </uix:NTypeInto>
-                                      <uix:NCheckState DisplayName="Check App State 'Log In' : If Its not the first time logging in" sap:VirtualizedContainerService.HintSize="954,557" sap2010:WorkflowViewState.IdRef="NCheckState_13" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                                      <uix:NCheckState DisplayName="Check App State 'Log In' : If Its not the first time logging in" sap:VirtualizedContainerService.HintSize="954,521" sap2010:WorkflowViewState.IdRef="NCheckState_13" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                                         <uix:NCheckState.IfExists>
-                                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,308" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_41">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log In'" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
+                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log In'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
                                               <uix:NClick.Target>
                                                 <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/login?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8355584" CVScreenId="a518dd9f-97bd-472e-a063-d93fd6068aa6" CvElementArea="103, 332, 325, 49" CvTextArea="243, 350, 45, 18" CvTextArgument="Log In" CvType="Button" DesignTimeRectangle="105, 334, 322, 45" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl aaname='Log In' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl aaname='Log In' tag='DIV' type='' class='sso__cta enabled' check:text='Log In' /&gt;" Guid="183d79b1-fef4-4160-9af3-a46b25dd7af7" InformativeScreenshot="55c2279186ffaed35fe0ad2d4fcff665.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                                               </uix:NClick.Target>
-                                              <uix:NClick.VerifyOptions>
-                                                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
-                                                  <uix:VerifyExecutionOptions.Retry>
-                                                    <InArgument x:TypeArguments="x:Boolean" />
-                                                  </uix:VerifyExecutionOptions.Retry>
-                                                  <uix:VerifyExecutionOptions.Timeout>
-                                                    <InArgument x:TypeArguments="x:Double" />
-                                                  </uix:VerifyExecutionOptions.Timeout>
-                                                </uix:VerifyExecutionOptions>
-                                              </uix:NClick.VerifyOptions>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -613,7 +603,7 @@
               </uix:NCheckState.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
