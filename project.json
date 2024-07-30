@@ -86,6 +86,19 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "bd07fc3b-4591-4120-92a7-348325360ed1",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TestCase.xaml"
+      },
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "f3e76e4e-af5f-4936-9631-cb98de15ce8a",
+        "testCaseType": "TestCase",
+        "fileName": "TestCases\\Object Test Template 1.xaml"
       }
     ],
     "saveToCloud": false
