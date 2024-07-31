@@ -99,6 +99,12 @@
         "testCaseId": "f3e76e4e-af5f-4936-9631-cb98de15ce8a",
         "testCaseType": "TestCase",
         "fileName": "TestCases\\Object Test Template 1.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "46f764a8-33c8-42d6-b4f0-8915aa44b662",
+        "testCaseType": "TestCase",
+        "fileName": "TestCases\\Tc_002_UberInput.xaml"
       }
     ],
     "saveToCloud": false

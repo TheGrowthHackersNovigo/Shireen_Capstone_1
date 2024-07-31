@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1171,1392</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1171,1436</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,20 +120,20 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UberLogin" sap:VirtualizedContainerService.HintSize="1112,1327" sap2010:WorkflowViewState.IdRef="Sequence_15">
+  <Sequence DisplayName="UberLogin" sap:VirtualizedContainerService.HintSize="1112,1371" sap2010:WorkflowViewState.IdRef="Sequence_15">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Uber" sap:VirtualizedContainerService.HintSize="1050,1239" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="eef1ec68-b306-4939-b581-f822f6fe110a" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Uber" sap:VirtualizedContainerService.HintSize="1050,1283" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="eef1ec68-b306-4939-b581-f822f6fe110a" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,999" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,1043" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="MailUberOtp" />
               <Variable x:TypeArguments="x:String" Name="UberOTP" />
@@ -143,9 +143,9 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Find a'" sap:VirtualizedContainerService.HintSize="954,633" sap2010:WorkflowViewState.IdRef="NCheckState_11" ScopeIdentifier="eef1ec68-b306-4939-b581-f822f6fe110a" Timeout="5" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Find a'" sap:VirtualizedContainerService.HintSize="954,675" sap2010:WorkflowViewState.IdRef="NCheckState_11" ScopeIdentifier="eef1ec68-b306-4939-b581-f822f6fe110a" Timeout="5" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,384" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,386" sap2010:WorkflowViewState.IdRef="Sequence_38">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -160,7 +160,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_39">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>

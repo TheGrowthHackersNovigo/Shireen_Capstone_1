@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>2904,5784</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2904,5744</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,20 +121,20 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OlaLogin" sap:VirtualizedContainerService.HintSize="2914,5719" sap2010:WorkflowViewState.IdRef="Sequence_35">
+  <Sequence DisplayName="OlaLogin" sap:VirtualizedContainerService.HintSize="2914,5679" sap2010:WorkflowViewState.IdRef="Sequence_35">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="2852,5631" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="2852,5591" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="2818,5391" sap2010:WorkflowViewState.IdRef="Sequence_34">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="2818,5351" sap2010:WorkflowViewState.IdRef="Sequence_34">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -289,7 +289,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
             <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="2756,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="[in_Config(&quot;OlaUrl&quot;).ToString]" Version="V3" />
-            <uix:NCheckState DisplayName="Check App State 'OLA-HOME'" sap:VirtualizedContainerService.HintSize="2756,4959" sap2010:WorkflowViewState.IdRef="NCheckState_10" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'OLA-HOME'" sap:VirtualizedContainerService.HintSize="2756,4919" sap2010:WorkflowViewState.IdRef="NCheckState_10" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="2252,4677" sap2010:WorkflowViewState.IdRef="Sequence_32">
                   <sap:WorkflowViewStateService.ViewState>
@@ -448,7 +448,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
-                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Enter the'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,250" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Text="[OTP]" Version="V3">
+                                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="5" DisplayName="Type Into 'Enter the'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,250" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Text="[OTP]" Version="V3">
                                         <uix:NTypeInto.Target>
                                           <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/login?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8355584" CVScreenId="7b8a9682-2656-4ed7-9cc4-2f416219360e" CvTextArea="168, 341, 119, 15" CvTextArgument="Enter 4 digit OTP" CvType="Text" DesignTimeRectangle="105, 327, 322, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl class='sso__sub-title' tag='DIV' /&gt;&lt;nav up='1' /&gt;&lt;webctrl class='sso__new-user__otp-wrapper' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl class='sso__new-user__otp-wrapper' tag='DIV' type='' aaname='  ' /&gt;" Guid="cb850b9e-85a2-4b8b-b27d-35cfa0be44d6" InformativeScreenshot="dcfee10bdd2343011e229ca84d219b9f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                                             <uix:TargetAnchorable.Anchors>
@@ -473,7 +473,7 @@
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Log In'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
+                                            <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DisplayName="Click 'Log In'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
                                               <uix:NClick.Target>
                                                 <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/login?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8355584" CVScreenId="a518dd9f-97bd-472e-a063-d93fd6068aa6" CvElementArea="103, 332, 325, 49" CvTextArea="243, 350, 45, 18" CvTextArgument="Log In" CvType="Button" DesignTimeRectangle="105, 334, 322, 45" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl aaname='Log In' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl aaname='Log In' tag='DIV' type='' class='sso__cta enabled' check:text='Log In' /&gt;" Guid="183d79b1-fef4-4160-9af3-a46b25dd7af7" InformativeScreenshot="55c2279186ffaed35fe0ad2d4fcff665.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                                               </uix:NClick.Target>
@@ -493,7 +493,7 @@
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Sign up'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
+                                            <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="5" DisplayName="Click 'Sign up'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2dfe8b67-d04b-40bb-b4e6-a2a05ea3bda9" Version="V3">
                                               <uix:NClick.Target>
                                                 <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/login?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8355584" CVScreenId="463f9883-e47a-47ec-98e4-f41fc89505d5" CvElementArea="103, 389, 325, 49" CvTextArea="238, 405, 55, 19" CvTextArgument="Sign up" CvType="Button" DesignTimeRectangle="105, 390, 322, 45" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl class='sso__cta' tag='DIV' aaname='Sign up' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-login' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-login' tag='OLA-LOGIN' /&gt;&lt;webctrl id='ssoIframe' shadowhostid='' tag='IFRAME' /&gt;&lt;webctrl class='sso__cta' tag='DIV' aaname='Sign up' type='' check:text='Sign up' /&gt;" Guid="c5f27b8e-9fb4-474f-acb2-8fb2774a4d48" InformativeScreenshot="7abe1ad21b66eda571abde60748a1187.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                                               </uix:NClick.Target>
