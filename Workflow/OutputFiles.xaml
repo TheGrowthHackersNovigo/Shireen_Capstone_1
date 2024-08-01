@@ -2,8 +2,8 @@
   <x:Members>
     <x:Property Name="io_dt_UberData" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_dt_OlaData" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_dt_JoinedData" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_OlaData" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1171,1452</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -121,7 +121,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[in_dt_OlaData]" DisplayName="Write Range Workbook : Only ola cars" sap:VirtualizedContainerService.HintSize="354,148" sap2010:WorkflowViewState.IdRef="WriteRange_6" SheetName="[in_Config(&quot;OutputSheet2&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]">
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[io_dt_OlaData]" DisplayName="Write Range Workbook : Only ola cars" sap:VirtualizedContainerService.HintSize="354,148" sap2010:WorkflowViewState.IdRef="WriteRange_6" SheetName="[in_Config(&quot;OutputSheet2&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,7 +129,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:JoinDataTables sap2010:Annotation.AnnotationText="Joining the car prices of both ola and uber" DataTable1="[in_dt_OlaData]" DataTable2="[io_dt_UberData]" DisplayName="Join Data Tables : Both ola and uber prices" sap:VirtualizedContainerService.HintSize="354,123" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[io_dt_JoinedData]">
+    <ui:JoinDataTables sap2010:Annotation.AnnotationText="Joining the car prices of both ola and uber" DataTable1="[io_dt_OlaData]" DataTable2="[io_dt_UberData]" DisplayName="Join Data Tables : Both ola and uber prices" sap:VirtualizedContainerService.HintSize="354,123" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[io_dt_JoinedData]">
       <ui:JoinDataTables.Arguments>
         <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
           <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -164,7 +164,6 @@
       </ui:FilterDataTable.Filters>
       <ui:FilterDataTable.SelectColumns>
         <scg:List x:TypeArguments="InArgument" Capacity="4">
-          <InArgument x:TypeArguments="x:String">["RunTime"]</InArgument>
           <InArgument x:TypeArguments="x:String">["From_1"]</InArgument>
           <InArgument x:TypeArguments="x:String">["To_1"]</InArgument>
           <InArgument x:TypeArguments="x:String">["RunTime_1"]</InArgument>
@@ -187,7 +186,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:MergeDataTable Destination="[io_dt_UberData]" DisplayName="Merge Data Table : Both ola and uber prices" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[in_dt_OlaData]">
+    <ui:MergeDataTable Destination="[io_dt_UberData]" DisplayName="Merge Data Table : Both ola and uber prices" sap:VirtualizedContainerService.HintSize="354,165" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[io_dt_OlaData]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

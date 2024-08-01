@@ -2,15 +2,15 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property Name="dt_OlaCarDetails" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="OlaCarDetails" Type="InOutArgument(x:String)" />
-    <x:Property Name="Mini" Type="InOutArgument(x:String)" />
-    <x:Property Name="PrimeSedan" Type="InOutArgument(x:String)" />
-    <x:Property Name="PrimeSUV" Type="InOutArgument(x:String)" />
-    <x:Property Name="OlaDetails" Type="InOutArgument(s:Object[])" />
     <x:Property Name="io_dt_OlaData" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_OlaCarDetails" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_OlaCarDetails" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_Mini" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_PrimeSedan" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_PrimeSUV" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_OlaDetails" Type="InOutArgument(s:Object[])" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1776,5272</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1714,5831</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,37 +124,38 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OlaOperations" sap:VirtualizedContainerService.HintSize="1786,5207" sap2010:WorkflowViewState.IdRef="Sequence_60">
+  <Sequence sap2010:Annotation.AnnotationText="After logging into Ola application, it will enter the from and to location from the input , then it will check for the available rides and then extract the prices for mini,PrimeSedan,PrimeSUV." DisplayName="OlaOperations" sap:VirtualizedContainerService.HintSize="1724,5766" sap2010:WorkflowViewState.IdRef="Sequence_60">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="1724,5119" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" ScopeGuid="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com" sap:VirtualizedContainerService.HintSize="1662,5647" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" ScopeGuid="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1690,4879" sap2010:WorkflowViewState.IdRef="Sequence_59">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1628,5407" sap2010:WorkflowViewState.IdRef="Sequence_59">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'AVAILABLE RIDES'" sap:VirtualizedContainerService.HintSize="1628,4789" sap2010:WorkflowViewState.IdRef="NCheckState_15" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'AVAILABLE RIDE'" sap:VirtualizedContainerService.HintSize="1566,5317" sap2010:WorkflowViewState.IdRef="NCheckState_15" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1124,4547" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                <Sequence DisplayName="Target appears : Home page" sap:VirtualizedContainerService.HintSize="1062,5075" sap2010:WorkflowViewState.IdRef="Sequence_57">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="1062,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_Config(&quot;OlaUrl&quot;).ToString]" Version="V3" />
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="3" DisplayName="Click 'FROM'" sap:VirtualizedContainerService.HintSize="1062,189" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
+                  <uix:NGoToUrl DisplayName="Go To URL : Home page" sap:VirtualizedContainerService.HintSize="1000,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_Config(&quot;OlaUrl&quot;).ToString]" Version="V3" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="3" DisplayName="Click 'FROM'" sap:VirtualizedContainerService.HintSize="1000,189" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8388352" CVScreenId="3f75ecca-0ab9-452e-b036-a30283efa505" CvTextArea="25, 258, 29, 10" CvTextArgument="FROM" CvType="Text" DesignTimeRectangle="18, 243, 64, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME' /&gt;&lt;webctrl shadowhostid='' tag='OLA-LOCATION-INPUT' /&gt;&lt;webctrl aaname='FROM' shadowhostid='' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME' /&gt;&lt;webctrl shadowhostid='' tag='OLA-LOCATION-INPUT' /&gt;&lt;webctrl aaname='FROM' shadowhostid='' tag='DIV' type='' class='left h-full text label' check:innerText='FROM' /&gt;" Guid="8ddab5bd-589b-4da5-a000-42f5decac4f9" InformativeScreenshot="6d60f5a345dd0cde2a4241eda768e00e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NClick.Target>
@@ -165,7 +166,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NClick>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="5" DisplayName="Type Into 'INPUT addressInput'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1062,250" sap2010:WorkflowViewState.IdRef="NTypeInto_15" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Text="[in_TransactionItem.SpecificContent(&quot;From&quot;).ToString+&quot; &quot;+in_TransactionItem.SpecificContent(&quot;FromCoordinates&quot;).ToString]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="5" DisplayName="Type Into 'From'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_15" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Text="[in_TransactionItem.SpecificContent(&quot;From&quot;).ToString+&quot; &quot;+in_TransactionItem.SpecificContent(&quot;FromCoordinates&quot;).ToString]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/location?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8388352" CVScreenId="933a280c-748e-4474-a455-06da4f912c5b" CvTextArea="82, 212, 383, 16" CvTextArgument="Ground Floor, N.J. Pearl, Kodialbail, Opp. PVS Kala..." CvType="Text" DesignTimeRectangle="83, 198, 401, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl id='addressInput' shadowhostid='' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl id='addressInput' shadowhostid='' tag='INPUT' type='text' class='' placeholder='Ground Floor, N.J. Pearl, Kodialbail, Opp. PVS Kalakunja, Kodailbail, Mangaluru, Karnataka, 575003, India' aaname='' /&gt;" Guid="9e05cd31-4589-470e-b9fc-470fb8e30abd" InformativeScreenshot="40da54308ec7a5c7ec396d48560e374b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
@@ -176,16 +177,16 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NTypeInto>
-                  <uix:NCheckState DisplayName="Check App State 'DIV'" sap:VirtualizedContainerService.HintSize="1062,1076" sap2010:WorkflowViewState.IdRef="NCheckState_12" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="Checking if the location is available if it is not then it will fill the prices of the car will null&#xD;&#xA;" DisplayName="Check App State 'Location available'" sap:VirtualizedContainerService.HintSize="1000,1001" sap2010:WorkflowViewState.IdRef="NCheckState_12" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                      <Sequence DisplayName="Target appears : Location available" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_51">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="7" DisplayName="Click 'KSR Road'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="7" DisplayName="Click 'From location'" sap:VirtualizedContainerService.HintSize="388,182" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/location?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8388352" CVScreenId="bf58ad7f-b843-4ddb-8be7-f9eb4a1d41c9" CvTextArea="82, 286, 366, 13" CvTextArgument="KSR Road Hampankatta Mangaluru Karnataka 575003 India" CvType="Text" DesignTimeRectangle="83, 284, 401, 17" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl class='address' parentid='modalContent' shadowhostid='' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl class='address' parentid='modalContent' shadowhostid='' tag='DIV' type='' aaname='KSR Road Hampankatta Mangaluru Karnataka 575003 India' check:innerText='KSR Road Hampankatta Mangaluru Karnataka 575003 India' /&gt;" Guid="49c584b9-055a-480f-864b-62005ce6a875" InformativeScreenshot="f53909a9b74fff420920fd3540e115ee.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                               <uix:TargetAnchorable.Anchors>
@@ -205,58 +206,51 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="558,827" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                      <Sequence DisplayName="Target does not appear : Location available" sap:VirtualizedContainerService.HintSize="496,710" sap2010:WorkflowViewState.IdRef="Sequence_52">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,737" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                        <Assign DisplayName="Assign : Price as null" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:Object[]">[io_OlaDetails]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:Object[]">[New Object() {in_TransactionItem.SpecificContent("From").ToString(), in_TransactionItem.SpecificContent("To").ToString(), Date.Now, "Ola", "", "", ""}]</InArgument>
+                          </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_12">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="s:Object[]">[OlaDetails]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="s:Object[]">[{in_TransactionItem.SpecificContent("From").ToString,in_TransactionItem.SpecificContent("To").ToString,"","Ola","","",""}]</InArgument>
-                            </Assign.Value>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Assign>
-                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="AddDataRow_6">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:AddDataRow>
-                          <ui:LogMessage DisplayName="Log Message : No rides from the location" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;No rides available from this location&quot;]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                          <Throw Exception="[new BusinessRuleException(&quot;WrongFromLocation&quot;)]" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Throw_13">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Throw>
-                        </Sequence>
+                        </Assign>
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[io_OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row : Cars with price as null" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="AddDataRow_6">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AddDataRow>
+                        <ui:LogMessage DisplayName="Log Message : No rides from the location" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;No rides available from this location&quot;]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <Throw DisplayName="Throw: Wrong location" Exception="[new BusinessRuleException(&quot;WrongFromLocation&quot;)]" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Throw_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Throw>
                       </Sequence>
                     </uix:NCheckState.IfNotExists>
                     <uix:NCheckState.Target>
@@ -266,10 +260,11 @@
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NCheckState>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click 'TO'" sap:VirtualizedContainerService.HintSize="1062,189" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="5" DisplayName="Click 'TO'" sap:VirtualizedContainerService.HintSize="1000,189" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8388352" CVScreenId="17ca7546-3232-45e8-b1f0-887ccf8d62ca" CvElementArea="16, 290, 516, 42" CvTextArea="24, 306, 15, 10" CvTextArgument="TO" CvType="Button" DesignTimeRectangle="18, 291, 64, 40" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME-LOCAL' /&gt;&lt;webctrl shadowhostid='' tag='OLA-LOCATION-INPUT' /&gt;&lt;webctrl aaname='TO' shadowhostid='' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME-LOCAL' /&gt;&lt;webctrl shadowhostid='' tag='OLA-LOCATION-INPUT' /&gt;&lt;webctrl aaname='TO' shadowhostid='' tag='DIV' type='' class='left h-full text label' check:text='TO' /&gt;" Guid="09028b4f-4bc4-4bb5-ae62-5e7c621c6db2" InformativeScreenshot="2ba298fcaa3692fcab1563be58381df0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NClick.Target>
@@ -280,14 +275,14 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NClick>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="3" DisplayName="Type Into 'INPUT addressInput'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1062,250" sap2010:WorkflowViewState.IdRef="NTypeInto_16" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Text="[in_TransactionItem.SpecificContent(&quot;To&quot;).ToString+&quot; &quot;+in_TransactionItem.SpecificContent(&quot;ToCoordinates&quot;).ToString]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="3" DisplayName="Type Into 'To location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_16" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Text="[in_TransactionItem.SpecificContent(&quot;To&quot;).ToString+&quot; &quot;+in_TransactionItem.SpecificContent(&quot;ToCoordinates&quot;).ToString]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/location?pickup_name=Current%20Location&amp;lat=12.877824&amp;lng=74.8388352" CVScreenId="f9613c23-ed33-494e-ae06-c8aaa46bccc5" CvElementArea="16, 194, 515, 52" CvType="InputBox" DesignTimeRectangle="83, 197, 401, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl id='addressInput' shadowhostid='' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl id='ola-location' shadowhostid='' tag='OLA-MODAL' /&gt;&lt;webctrl shadowhostid='ola-location' tag='OLA-LOCATION' /&gt;&lt;webctrl id='addressInput' shadowhostid='' tag='INPUT' type='text' class='' placeholder='Enter address..' aaname='' /&gt;" Guid="5b896412-bdb4-407b-bd47-4f05bf976cc3" InformativeScreenshot="154dc00db9d0c8c269a46db6bb97791d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
                   </uix:NTypeInto>
-                  <uix:NCheckState DisplayName="Check App State 'DIV'" sap:VirtualizedContainerService.HintSize="1062,521" sap2010:WorkflowViewState.IdRef="NCheckState_13" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="Checking if the location is available if it is not then it will fill the prices of the car will null" DisplayName="Check App State 'Location'" sap:VirtualizedContainerService.HintSize="1000,992" sap2010:WorkflowViewState.IdRef="NCheckState_13" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                      <Sequence DisplayName="Target appears : Location" sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_53">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -314,19 +309,19 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                      <Sequence DisplayName="Target does not appear : Location" sap:VirtualizedContainerService.HintSize="496,712" sap2010:WorkflowViewState.IdRef="Sequence_54">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_11">
+                        <Assign DisplayName="Assign : Null for prices" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_11">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="s:Object[]">[OlaDetails]</OutArgument>
+                            <OutArgument x:TypeArguments="s:Object[]">[io_OlaDetails]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="s:Object[]">[{in_TransactionItem.SpecificContent("From").ToString,in_TransactionItem.SpecificContent("To").ToString,"","Ola","","",""}]</InArgument>
+                            <InArgument x:TypeArguments="s:Object[]">[New Object() {in_TransactionItem.SpecificContent("From").ToString(), in_TransactionItem.SpecificContent("To").ToString(), Date.Now, "Ola", "", "", ""}]</InArgument>
                           </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -335,7 +330,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[io_OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row : Car details" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -343,7 +338,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:AddDataRow>
-                        <ui:LogMessage DisplayName="Log Message : No rides from the location" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;No rides available from this location&quot;]">
+                        <ui:LogMessage DisplayName="Log Message : No rides from this location" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;No rides available from this location&quot;]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -351,7 +346,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:LogMessage>
-                        <Throw Exception="[new BusinessRuleException(&quot;WrongFromLocation&quot;)]" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Throw_10">
+                        <Throw DisplayName="Throw :Location not available" Exception="[new BusinessRuleException(&quot;WrongToLocation&quot;)]" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Throw_10">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -368,30 +363,31 @@
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NCheckState>
-                  <uix:NCheckState DisplayName="Check App State 'AVAILABLE RIDES'" sap:VirtualizedContainerService.HintSize="1062,1868" sap2010:WorkflowViewState.IdRef="NCheckState_14" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                  <uix:NCheckState DisplayName="Check App State 'AVAILABLE RIDES'" sap:VirtualizedContainerService.HintSize="1000,2000" sap2010:WorkflowViewState.IdRef="NCheckState_14" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,1626" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                      <Sequence DisplayName="Target appears : Available rides" sap:VirtualizedContainerService.HintSize="496,1758" sap2010:WorkflowViewState.IdRef="Sequence_55">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_OlaCarDetails]" DelayBefore="5" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='OlaCars'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
+                        <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[io_dt_OlaCarDetails]" DelayBefore="5" DisplayName="Extract Table Data : Car details" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='OlaCars'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="1c7b0231-665c-4094-a340-6f335c7ed11a" Version="V3">
                           <uix:NExtractData.Target>
                             <uix:TargetAnchorable BrowserURL="https://book.olacabs.com/?pickup_name=KIAL%20Parking%204%2C%20Kempegowda%20International%20Airport%20Bengaluru%20Terminal%202%20Bengaluru%20Karnataka%20560300%20India&amp;lat=13.19765&amp;lng=77.7078&amp;drop_lat=12.9109&amp;drop_lng=77.63246&amp;drop_name=Novigo%20Solutions%20Bangalore%2C%20Invenger%20Tower%202nd%20Floor%20Site%20No%201181%207th%20Sector%20HSR%20Layout%20Bengaluru%20Karnataka%20560068%20India" DesignTimeRectangle="18, 425, 513, 215" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl tag='OLA-APP' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME' /&gt;&lt;webctrl shadowhostid='' tag='OLA-HOME-LOCAL' /&gt;&lt;webctrl shadowhostid='' tag='OLA-CABS' /&gt;&lt;webctrl idx='3' shadowhostid='' tag='DIV' /&gt;" Guid="2b4969c9-38c3-4dd8-9c9f-9850c3bd5786" InformativeScreenshot="1dc4a1565912153de3e62b8e88d01fd9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Book Cabs Nearby at Best Price | Hire Taxi Nearby Online at Olacabs.com' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                           </uix:NExtractData.Target>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NExtractData>
-                        <ui:OutputDataTable DataTable="[dt_OlaCarDetails]" DisplayName="Output Data Table as Text" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[OlaCarDetails]">
+                        <ui:OutputDataTable DataTable="[io_dt_OlaCarDetails]" DisplayName="Output Data Table as Text : Car details" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[io_OlaCarDetails]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -399,7 +395,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:OutputDataTable>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[OlaCarDetails]">
+                        <ui:LogMessage DisplayName="Log Message : Car details" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[io_OlaCarDetails]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -407,39 +403,39 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:LogMessage>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign DisplayName="Assign : Extract price for mini" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[Mini]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[io_Mini]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(OlaCarDetails,"(?&lt;=Mini\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(io_OlaCarDetails,"(?&lt;=Mini\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Mini :&quot;+Mini]" />
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <ui:LogMessage DisplayName="Log Message : Mini" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Mini :&quot;+io_Mini]" />
+                        <Assign DisplayName="Assign : Extract price for PrimeSedan" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[PrimeSedan]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[io_PrimeSedan]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(OlaCarDetails,"(?&lt;=Prime\s*Sedan\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(io_OlaCarDetails,"(?&lt;=Prime\s*Sedan\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;PrimeSedan :&quot;+PrimeSedan]" />
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
+                        <ui:LogMessage DisplayName="Log Message :PrimeSedan" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;PrimeSedan :&quot;+io_PrimeSedan]" />
+                        <Assign DisplayName="Assign : Extract price for PrimeSUV" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[PrimeSUV]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[io_PrimeSUV]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(OlaCarDetails,"(?&lt;=Prime\s*SUV\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(io_OlaCarDetails,"(?&lt;=Prime\s*SUV\s*)\W+\d+(?=\w*|\s*|$)").Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;PrimeSUV: &quot;+PrimeSUV]" />
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+                        <ui:LogMessage DisplayName="Log Message :PrimeSUV" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;PrimeSUV: &quot;+io_PrimeSUV]" />
+                        <Assign DisplayName="Assign : CarPrices" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_9">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="s:Object[]">[OlaDetails]</OutArgument>
+                            <OutArgument x:TypeArguments="s:Object[]">[io_OlaDetails]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="s:Object[]">[{in_TransactionItem.SpecificContent("From").ToString,in_TransactionItem.SpecificContent("To").ToString,"","Ola",Mini,PrimeSedan,PrimeSUV}]</InArgument>
+                            <InArgument x:TypeArguments="s:Object[]">[New Object() {in_TransactionItem.SpecificContent("From").ToString(), in_TransactionItem.SpecificContent("To").ToString(), Date.Now, "Ola", io_Mini, io_PrimeSedan, io_PrimeSUV}]</InArgument>
                           </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -448,17 +444,17 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Assign>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,211" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[io_OlaDetails]" DataTable="[io_dt_OlaData]" DisplayName="Add Data Row: CarPrices" sap:VirtualizedContainerService.HintSize="434,211" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                      <Sequence DisplayName="Target does not appear : Available rides" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_56">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[new BusinessRuleException(&quot;NoRidesAvailable&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_11">
+                        <Throw DisplayName="Throw : No rides available" Exception="[new BusinessRuleException(&quot;NoRidesAvailable&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_11">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -481,14 +477,14 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                <Sequence DisplayName="Target does not appear : Home page" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_58">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new SystemException(&quot;OlaPageNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_12">
+                  <Throw DisplayName="Throw : Home page not loading" Exception="[new SystemException(&quot;OlaPageNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_12">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>

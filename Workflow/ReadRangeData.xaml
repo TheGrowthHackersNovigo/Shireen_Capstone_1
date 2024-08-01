@@ -101,13 +101,15 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadRangeData" sap:VirtualizedContainerService.HintSize="416,319" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Reading the output templates of uber and ola to get the headers" DisplayName="ReadRangeData " sap:VirtualizedContainerService.HintSize="416,523" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_UberData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="354,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;OutputSheet1&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_OlaData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="354,111" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;OutputSheet2&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_UberData]" DisplayName="Read Range Workbook : Uber template" sap:VirtualizedContainerService.HintSize="354,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;OutputSheet1&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dt_OlaData]" DisplayName="Read Range Workbook : Ola template" sap:VirtualizedContainerService.HintSize="354,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;OutputSheet2&quot;).ToString]" WorkbookPath="[in_Config(&quot;OutputFile&quot;).ToString]" />
+    <ui:LogMessage DisplayName="Log Message : Template read" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Output templates has been read&quot;]" />
   </Sequence>
 </Activity>

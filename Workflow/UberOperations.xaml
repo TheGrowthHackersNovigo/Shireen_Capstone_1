@@ -1,16 +1,16 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="UberOperations" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="FromLocation" Type="InArgument(x:String)" />
-    <x:Property Name="ToLocation" Type="InArgument(x:String)" />
-    <x:Property Name="UberGo" Type="InOutArgument(x:String)" />
-    <x:Property Name="Premeir" Type="InOutArgument(x:String)" />
-    <x:Property Name="UberXL" Type="InOutArgument(x:String)" />
-    <x:Property Name="UberDetails" Type="InOutArgument(s:Object[])" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="io_dt_UberData" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_FromLocation" Type="InArgument(x:String)" />
+    <x:Property Name="in_ToLocation" Type="InArgument(x:String)" />
+    <x:Property Name="io_UberGo" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_Premeir" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_UberXL" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_UberDetails" Type="InOutArgument(s:Object[])" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1714,4655</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1714,4565</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -49,6 +49,8 @@
       <x:String>System.Net.Mail</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -123,96 +125,49 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UberInput" sap:VirtualizedContainerService.HintSize="1724,4590" sap2010:WorkflowViewState.IdRef="Sequence_46">
+  <Sequence sap2010:Annotation.AnnotationText="After logging into Uber application, it will go to the uber home page then it will type the from and to location's Co-ordinates and it will search for the available rides, then will extract the price for UberGo,Premier, UberXL cars for that particu;ar location" DisplayName="UberInput" sap:VirtualizedContainerService.HintSize="1724,4500" sap2010:WorkflowViewState.IdRef="Sequence_46">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Plan your Uber journey" sap:VirtualizedContainerService.HintSize="1662,4502" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Plan your Uber journey" sap:VirtualizedContainerService.HintSize="1662,4381" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1628,4262" sap2010:WorkflowViewState.IdRef="Sequence_45">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1628,4141" sap2010:WorkflowViewState.IdRef="Sequence_45">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Find a trip'" sap:VirtualizedContainerService.HintSize="1566,4172" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Find a trip'" sap:VirtualizedContainerService.HintSize="1566,4051" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="1062,3890" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                <Sequence DisplayName="Target appears : Uber home page" sap:VirtualizedContainerService.HintSize="1062,3809" sap2010:WorkflowViewState.IdRef="Sequence_43">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh" sap:VirtualizedContainerService.HintSize="1000,114" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V3" />
+                  <uix:NNavigateBrowser Action="Refresh" DisplayName="Navigate Browser - Refresh - Uber page" sap:VirtualizedContainerService.HintSize="1000,114" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V3" />
                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Uber'" sap:VirtualizedContainerService.HintSize="1000,189" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/pickup" CVScreenId="e97e51ed-30c2-429d-857c-faca5d316292" CvTextArea="71, 111, 68, 27" CvTextArgument="Uber" CvType="Text" DesignTimeRectangle="72, 95, 66, 60" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='A' aaname='Uber' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' aaname='Uber' type='' class='_css-hlTteY' check:text='Uber' /&gt;" Guid="b93279fb-7160-4230-b093-8bcefef91215" InformativeScreenshot="dcea4071fb7c6dc38c8c2b43320456ea.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Pick-up location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_13" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Text="[FromLocation]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Pick-up location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_13" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Text="[in_FromLocation]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/pickup" CVScreenId="fe2246fc-aec6-4fcb-934c-0057c3fea184" CvElementArea="89, 244, 293, 48" CvType="InputBox" DesignTimeRectangle="92, 247, 276, 44" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl class='_css-gvRkiA' parentid='wrapper' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='_css-gvRkiA' parentid='wrapper' tag='DIV' type='' aaname='' /&gt;" Guid="ca02fc37-a4bc-40c3-90f9-6da69994d4b4" InformativeScreenshot="c7b379518be225ead7c727b8424b39da.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
                   </uix:NTypeInto>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1000,57" sap2010:WorkflowViewState.IdRef="CommentOut_11">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="520,552" sap2010:WorkflowViewState.IdRef="Sequence_38">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="458,464" sap2010:WorkflowViewState.IdRef="RetryScope_3">
-                          <ui:RetryScope.ActivityBody>
-                            <ActivityAction>
-                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,266" sap2010:WorkflowViewState.IdRef="Sequence_37">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DelayBefore="5" DisplayName="Type Into 'DIV'" EmptyField="True" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[FromLocation]">
-                                  <ui:TypeInto.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b00e4684-456c-424f-a7f8-7e070e73d29a" InformativeScreenshot="9734c17de275acc40d21a6bf3fd2c59b" Selector="&lt;webctrl css-selector='*' parentid='wrapper' tag='DIV' /&gt;&lt;webctrl tag='INPUT' /&gt;" WaitForReady="COMPLETE">
-                                      <ui:Target.TimeoutMS>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:Target.TimeoutMS>
-                                    </ui:Target>
-                                  </ui:TypeInto.Target>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:TypeInto>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:RetryScope.ActivityBody>
-                          <ui:RetryScope.Condition>
-                            <ActivityFunc x:TypeArguments="x:Boolean" />
-                          </ui:RetryScope.Condition>
-                        </ui:RetryScope>
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:CommentOut>
-                  <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DelayBefore="3" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="1000,211" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_5" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
-                  <ui:LogMessage DisplayName="Log Message :FromLocation" sap:VirtualizedContainerService.HintSize="1000,175" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[FromLocation]">
+                  <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DelayBefore="3" DisplayName="Keyboard Shortcuts : Enter from location" sap:VirtualizedContainerService.HintSize="1000,211" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_5" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
+                  <ui:LogMessage DisplayName="Log Message :FromLocation" sap:VirtualizedContainerService.HintSize="1000,175" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[in_FromLocation]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -220,84 +175,27 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="5" DisplayName="Type Into 'Drop-off location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_14" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Text="[ToLocation]" Version="V3">
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="5" DisplayName="Type Into 'Drop-off location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_14" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Text="[in_ToLocation]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/home" CVScreenId="d02b102a-50ba-45b7-a2a4-146b403c0a3f" CvElementArea="88, 354, 297, 52" CvTextArea="132, 372, 128, 19" CvTextArgument="Drop-off location" CvType="Button" DesignTimeRectangle="132, 369, 128, 24" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Drop-off location' class='_css-cVmuWL' parentid='wrapper' tag='DIV' innertext='Drop-off location' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Drop-off location' class='_css-cVmuWL' parentid='wrapper' tag='DIV' innertext='Drop-off location' type='' check:text='Drop-off location' /&gt;" Guid="d02e791c-91b4-4b2e-a319-850151362d55" InformativeScreenshot="29842c3f18945157b8adf908ed78011e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NTypeInto.Target>
                   </uix:NTypeInto>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1000,57" sap2010:WorkflowViewState.IdRef="CommentOut_12">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="520,552" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="458,464" sap2010:WorkflowViewState.IdRef="RetryScope_4">
-                          <ui:RetryScope.ActivityBody>
-                            <ActivityAction>
-                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,266" sap2010:WorkflowViewState.IdRef="Sequence_39">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'DIV'" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[ToLocation]">
-                                  <ui:TypeInto.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1cba099c-038a-46a7-ad6a-f606b3f069d1" InformativeScreenshot="76afda552f69caa0123968bb018abd45" Selector="&lt;webctrl tag='INPUT' class='_css-hqBMbI' css-selector='*' isleaf='1' parentclass='_css-gHAfEC' parentid='wrapper' /&gt;">
-                                      <ui:Target.TimeoutMS>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:Target.TimeoutMS>
-                                      <ui:Target.WaitForReady>
-                                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                                      </ui:Target.WaitForReady>
-                                    </ui:Target>
-                                  </ui:TypeInto.Target>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:TypeInto>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:RetryScope.ActivityBody>
-                          <ui:RetryScope.Condition>
-                            <ActivityFunc x:TypeArguments="x:Boolean" />
-                          </ui:RetryScope.Condition>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:RetryScope>
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:CommentOut>
-                  <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DelayBefore="3" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="1000,211" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_6" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
-                  <ui:LogMessage DisplayName="Log Message :ToLocation" sap:VirtualizedContainerService.HintSize="1000,175" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[ToLocation]" />
+                  <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DelayBefore="3" DisplayName="Keyboard Shortcuts : Enter To location" sap:VirtualizedContainerService.HintSize="1000,211" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_6" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
+                  <ui:LogMessage DisplayName="Log Message :ToLocation" sap:VirtualizedContainerService.HintSize="1000,175" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[in_ToLocation]" />
                   <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;Delay&quot;))]" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="1000,189" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/drop?drop%5B0%5D=%7B%22addressLine1%22%3A%2222%2C%2018th%20Cross%20Rd%22%2C%22addressLine2%22%3A%22Rajiv%20Gandhi%20Nagar%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%22%2C%22id%22%3A%22ChIJQdmVQO0UrjsRIo-J7o86vSU%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A12.911026%2C%22longitude%22%3A77.629531%2C%22provider%22%3A%22google_places%22%7D&amp;pickup=%7B%22addressLine1%22%3A%22Terminal%201%22%2C%22addressLine2%22%3A%22Kempegowda%20Intl%20Airport%20Rd%2C%20A%20-%20Block%2C%20Gangamuthanahalli%2C%20Karnataka%22%2C%22id%22%3A%22ChIJsdFU6SQarjsRas8Hj7NKVVc%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A13.2008097%2C%22longitude%22%3A77.7097953%2C%22provider%22%3A%22google_places%22%7D" CVScreenId="89bcbb67-cb58-460b-a79b-6015fe9b26cc" CvElementArea="86, 479, 297, 53" CvTextArea="208, 496, 55, 15" CvTextArgument="Search" CvType="Button" DesignTimeRectangle="90, 481, 292, 48" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl class='_css-hUNeqW' tag='BUTTON' aaname='Search' /&gt;" FuzzySelectorArgument="&lt;webctrl class='_css-hUNeqW' tag='BUTTON' aaname='Search' type='' check:text='Search' /&gt;" Guid="5eae5196-0ec7-4ebf-90be-337221ad54f5" InformativeScreenshot="c347dcfce9ffd95c997f4703e258fc23.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <uix:NCheckState DisplayName="Check App State 'Choose a ride'" sap:VirtualizedContainerService.HintSize="1000,1924" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="Extracting the prices for the available rides" DisplayName="Check App State 'Choose a ride'" sap:VirtualizedContainerService.HintSize="1000,1955" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,1682" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                      <Sequence DisplayName="Target appears : Car price page" sap:VirtualizedContainerService.HintSize="496,1682" sap2010:WorkflowViewState.IdRef="Sequence_41">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message : Information retreiving" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_20" Message="[&quot;Retrieving information started&quot;]">
+                        <ui:LogMessage DisplayName="Log Message : Information retreiving" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Retrieving information started&quot;]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -305,7 +203,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:LogMessage>
-                        <uix:NGetText DisplayName="Get Text 'Uber GoPerson4'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[UberGo]" Version="V3">
+                        <uix:NGetText DisplayName="Get Text 'Uber GoPerson4'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[io_UberGo]" Version="V3">
                           <uix:NGetText.Target>
                             <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/product-selection?drop%5B0%5D=%7B%22addressLine1%22%3A%2222%2C%2018th%20Cross%20Rd%22%2C%22addressLine2%22%3A%22Rajiv%20Gandhi%20Nagar%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%22%2C%22id%22%3A%22ChIJQdmVQO0UrjsRIo-J7o86vSU%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A12.911026%2C%22longitude%22%3A77.629531%2C%22provider%22%3A%22google_places%22%7D&amp;pickup=%7B%22addressLine1%22%3A%22Terminal%201%22%2C%22addressLine2%22%3A%22Kempegowda%20Intl%20Airport%20Rd%2C%20A%20-%20Block%2C%20Gangamuthanahalli%2C%20Karnataka%22%2C%22id%22%3A%22ChIJsdFU6SQarjsRas8Hj7NKVVc%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A13.2008097%2C%22longitude%22%3A77.7097953%2C%22provider%22%3A%22google_places%22%7D&amp;vehicle=2007" CVScreenId="cc55fb9e-3a98-4714-8b5f-3e9e06157330" CvTextArea="913, 401, 90, 21" CvType="AnyWordGroup" DesignTimeRectangle="914, 398, 89, 29" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl class='_css-iQlrzm' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl class='_css-iQlrzm' tag='P' type='' /&gt;" Guid="f0207f66-728e-4f76-b964-5b4d570d020a" ImageBase64="" InformativeScreenshot="47c0498a4341d1287c3a6f6f5b5135d3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                               <uix:TargetAnchorable.Anchors>
@@ -316,8 +214,8 @@
                             </uix:TargetAnchorable>
                           </uix:NGetText.Target>
                         </uix:NGetText>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[UberGo]" />
-                        <uix:NGetText DisplayName="Get Text 'PremierPerson4'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[Premeir]" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message : UberGo" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[io_UberGo]" />
+                        <uix:NGetText DisplayName="Get Text 'PremierPerson4'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[io_Premeir]" Version="V3">
                           <uix:NGetText.Target>
                             <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/product-selection?drop%5B0%5D=%7B%22addressLine1%22%3A%2222%2C%2018th%20Cross%20Rd%22%2C%22addressLine2%22%3A%22Rajiv%20Gandhi%20Nagar%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%22%2C%22id%22%3A%22ChIJQdmVQO0UrjsRIo-J7o86vSU%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A12.911026%2C%22longitude%22%3A77.629531%2C%22provider%22%3A%22google_places%22%7D&amp;pickup=%7B%22addressLine1%22%3A%22Terminal%201%22%2C%22addressLine2%22%3A%22Kempegowda%20Intl%20Airport%20Rd%2C%20A%20-%20Block%2C%20Gangamuthanahalli%2C%20Karnataka%22%2C%22id%22%3A%22ChIJsdFU6SQarjsRas8Hj7NKVVc%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A13.2008097%2C%22longitude%22%3A77.7097953%2C%22provider%22%3A%22google_places%22%7D&amp;vehicle=2007" CVScreenId="e309c244-5081-41f2-a6c6-02a3f544bc27" CvTextArea="898, 677, 105, 25" CvType="AnyWordGroup" DesignTimeRectangle="900, 674, 103, 29" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl css-selector='*' parentid='wrapper' tag='DIV' innertext='Premier*' /&gt;&lt;webctrl class='_css-iQlrzm' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='wrapper' tag='DIV' innertext='Premier*' /&gt;&lt;webctrl class='_css-iQlrzm' tag='P' type='' /&gt;" Guid="c4136f00-3e4d-4203-aa6e-61b4c0022045" ImageBase64="" InformativeScreenshot="afa5bb8ccd7806adf5be176b1c11a986.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                               <uix:TargetAnchorable.Anchors>
@@ -328,8 +226,8 @@
                             </uix:TargetAnchorable>
                           </uix:NGetText.Target>
                         </uix:NGetText>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[Premeir]" />
-                        <uix:NGetText DisplayName="Get Text 'UberXLPerson6'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[UberXL]" Version="V3">
+                        <ui:LogMessage DisplayName="Log Message : Premier" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[io_Premeir]" />
+                        <uix:NGetText DisplayName="Get Text 'UberXLPerson6'" sap:VirtualizedContainerService.HintSize="434,189" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="57fc3c82-843c-46ef-8ba5-3e09b47b43d0" TextString="[io_UberXL]" Version="V3">
                           <uix:NGetText.Target>
                             <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/product-selection?drop%5B0%5D=%7B%22addressLine1%22%3A%2222%2C%2018th%20Cross%20Rd%22%2C%22addressLine2%22%3A%22Rajiv%20Gandhi%20Nagar%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%22%2C%22id%22%3A%22ChIJQdmVQO0UrjsRIo-J7o86vSU%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A12.911026%2C%22longitude%22%3A77.629531%2C%22provider%22%3A%22google_places%22%7D&amp;pickup=%7B%22addressLine1%22%3A%22Terminal%201%22%2C%22addressLine2%22%3A%22Kempegowda%20Intl%20Airport%20Rd%2C%20A%20-%20Block%2C%20Gangamuthanahalli%2C%20Karnataka%22%2C%22id%22%3A%22ChIJsdFU6SQarjsRas8Hj7NKVVc%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A13.2008097%2C%22longitude%22%3A77.7097953%2C%22provider%22%3A%22google_places%22%7D&amp;vehicle=2007" CVScreenId="9f34efa0-1505-4365-a0f6-ccb4de299c9f" CvTextArea="895, 546, 108, 24" CvType="AnyWordGroup" DesignTimeRectangle="896, 542, 107, 29" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-role='option' css-selector='*' parentid='wrapper' tabindex='0' tag='LI' innertext='UberXL*' /&gt;&lt;webctrl class='_css-iQlrzm' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='option' parentid='wrapper' tabindex='0' tag='LI' innertext='UberXL*' /&gt;&lt;webctrl class='_css-iQlrzm' tag='P' type='' /&gt;" Guid="7277aa39-619e-4eec-96b5-32fbbc4ead72" ImageBase64="" InformativeScreenshot="417682b7053038a4e492342f210da93a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                               <uix:TargetAnchorable.Anchors>
@@ -340,43 +238,48 @@
                             </uix:TargetAnchorable>
                           </uix:NGetText.Target>
                         </uix:NGetText>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[UberXL]" />
-                        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <ui:LogMessage DisplayName="Log Message : UberXL" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[io_UberXL]" />
+                        <Assign DisplayName="Assign : Uber prices" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="s:Object[]">[UberDetails]</OutArgument>
+                            <OutArgument x:TypeArguments="s:Object[]">[io_UberDetails]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="s:Object[]">[{in_TransactionItem.SpecificContent("From").ToString,in_TransactionItem.SpecificContent("To").ToString,"","Uber",UberGo,Premeir,UberXL}]</InArgument>
+                            <InArgument x:TypeArguments="s:Object[]">[New Object() {in_TransactionItem.SpecificContent("From").ToString(), in_TransactionItem.SpecificContent("To").ToString(), Date.Now, "Uber", io_UberGo, io_Premeir, io_UberXL}]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[UberDetails]" DataTable="[io_dt_UberData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,211" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[io_UberDetails]" DataTable="[io_dt_UberData]" DisplayName="Add Data Row : Uber prices" sap:VirtualizedContainerService.HintSize="434,211" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                      <Sequence DisplayName="Target does not appear : Car price page" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_42">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_24" Message="[&quot;Wrong location given&quot;]" />
-                        <Throw Exception="[new BusinessRuleException(&quot;WrongLocation&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                        <ui:LogMessage DisplayName="Log Message : No rides available" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot; No rides available&quot;]" />
+                        <Throw DisplayName="Throw : No rides" Exception="[new BusinessRuleException(&quot;WrongLocation&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_5" />
                       </Sequence>
                     </uix:NCheckState.IfNotExists>
                     <uix:NCheckState.Target>
                       <uix:TargetAnchorable BrowserURL="https://m.uber.com/go/product-selection?drop%5B0%5D=%7B%22addressLine1%22%3A%2222%2C%2018th%20Cross%20Rd%22%2C%22addressLine2%22%3A%22Rajiv%20Gandhi%20Nagar%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%22%2C%22id%22%3A%22ChIJQdmVQO0UrjsRIo-J7o86vSU%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A12.911026%2C%22longitude%22%3A77.629531%2C%22provider%22%3A%22google_places%22%7D&amp;pickup=%7B%22addressLine1%22%3A%22Terminal%201%22%2C%22addressLine2%22%3A%22Kempegowda%20Intl%20Airport%20Rd%2C%20A%20-%20Block%2C%20Gangamuthanahalli%2C%20Karnataka%22%2C%22id%22%3A%22ChIJsdFU6SQarjsRas8Hj7NKVVc%22%2C%22source%22%3A%22SEARCH%22%2C%22latitude%22%3A13.2008097%2C%22longitude%22%3A77.7097953%2C%22provider%22%3A%22google_places%22%7D&amp;vehicle=2007" CVScreenId="9f14b392-f2d2-4e19-9420-81cd3e0874b2" CvTextArea="435, 193, 230, 30" CvTextArgument="Choose a ride" CvType="Text" DesignTimeRectangle="436, 187, 583, 44" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl class='_css-huQRhA' parentid='wrapper' tag='DIV' aaname='Choose a ride' /&gt;" FuzzySelectorArgument="&lt;webctrl class='_css-huQRhA' parentid='wrapper' tag='DIV' aaname='Choose a ride' type='' check:text='Choose a ride' /&gt;" Guid="1f30cce3-32b8-4956-ad65-40e1ae3a52ab" InformativeScreenshot="798fb2fc76599b055ffb996f6fbd7016.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Plan your Uber journey' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                     </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
                   </uix:NCheckState>
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                <Sequence DisplayName="Target does not appear : Uber home page" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_44">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new SystemException(&quot;HomePageNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                  <Throw DisplayName="Throw : Uber home page not loading" Exception="[new SystemException(&quot;HomePageNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_6" />
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>

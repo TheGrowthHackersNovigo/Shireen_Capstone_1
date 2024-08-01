@@ -7,7 +7,7 @@
     <x:Property Name="io_ToCoordinates" Type="InOutArgument(x:String)" />
     <x:Property Name="io_ToLocation" Type="InOutArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1171,2570</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1171,2641</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -119,14 +119,15 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GettingCoordinates" sap:VirtualizedContainerService.HintSize="1158,2505" sap2010:WorkflowViewState.IdRef="Sequence_26">
+  <Sequence sap2010:Annotation.AnnotationText="Opening the google maps and typing in the from location and to location from the input, then extracting the Coordinates from the locations and passing this coordinates as input to the next process" DisplayName="GettingCoordinates" sap:VirtualizedContainerService.HintSize="1158,2576" sap2010:WorkflowViewState.IdRef="Sequence_26">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Google Maps" sap:VirtualizedContainerService.HintSize="1096,2417" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="856153ab-3e61-4ed9-b969-e1fd535a7013" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Google Maps" sap:VirtualizedContainerService.HintSize="1096,2457" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="856153ab-3e61-4ed9-b969-e1fd535a7013" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -138,7 +139,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Search Google Maps'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Text="[in_TransactionItem.SpecificContent(&quot;FromCoordinates&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Search Google Maps : From location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Text="[in_TransactionItem.SpecificContent(&quot;FromCoordinates&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.google.com/maps/@12.8775537,74.8365821,15z?entry=ttu" CVScreenId="f2c975d9-8593-4dc7-b3dc-68e6314a63ae" CvTextArea="119, 174, 130, 17" CvTextArgument="Search Google Maps" CvType="Text" DesignTimeRectangle="120, 170, 246, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='searchboxinput' tag='INPUT' aaname='Search Google Maps' /&gt;" FuzzySelectorArgument="&lt;webctrl id='searchboxinput' tag='INPUT' aaname='Search Google Maps' type='' class='fontBodyMedium searchboxinput xiQnY ' /&gt;" Guid="e553fb61-2925-47c0-904e-77ac7e749804" InformativeScreenshot="29dcdf6fba8cda902252335e792c7002.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Google Maps' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -151,14 +152,14 @@
             </uix:NTypeInto>
             <uix:NCheckState DisplayName="Check App State 'DirectionsSaveNearby…'" sap:VirtualizedContainerService.HintSize="1000,740" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,491" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <Sequence DisplayName="Target appears :Searched location page" sap:VirtualizedContainerService.HintSize="496,491" sap2010:WorkflowViewState.IdRef="Sequence_21">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NGetUrl CurrentUrl="[io_FromCoordinates]" DelayBefore="5" DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="NGetUrl_4" Version="V3" />
-                  <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <uix:NGetUrl CurrentUrl="[io_FromCoordinates]" DelayBefore="5" DisplayName="Get URL : Particular loaction" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="NGetUrl_4" Version="V3" />
+                  <Assign DisplayName="Assign : Coordinates of the location" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[io_FromLocation]</OutArgument>
                     </Assign.To>
@@ -166,18 +167,18 @@
                       <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(io_FromCoordinates,"(?&lt;=Karnataka/@)\S+(?=\s*,17z)").Value]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[io_FromLocation]" />
+                  <ui:LogMessage DisplayName="Log Message : From coordinates" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[io_FromLocation]" />
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Target does not appear  :Searched location page" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Google map location not loading&quot;]" />
-                  <Throw Exception="[new SystemException(&quot;LocationNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                  <ui:LogMessage DisplayName="Log Message : Location unavailable" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Google map location not loading&quot;]" />
+                  <Throw DisplayName="Throw : Location unavailable" Exception="[new SystemException(&quot;LocationNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_3" />
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>
@@ -190,8 +191,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NCheckState>
-            <uix:NNavigateBrowser DisplayName="Navigate Browser - Go Back" sap:VirtualizedContainerService.HintSize="1000,114" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V3" />
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;Delay&quot;))]" DisplayName="Type Into 'Search Google Maps'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Text="[in_TransactionItem.SpecificContent(&quot;ToCoordinates&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
+            <uix:NNavigateBrowser DisplayName="Navigate Browser - Go Back- Home page" sap:VirtualizedContainerService.HintSize="1000,114" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V3" />
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayBefore="[Convert.ToDouble(in_Config(&quot;Delay&quot;))]" DisplayName="Type Into 'Search Google Maps : To location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1000,250" sap2010:WorkflowViewState.IdRef="NTypeInto_9" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Text="[in_TransactionItem.SpecificContent(&quot;ToCoordinates&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.google.com/maps/@12.8775537,74.8365821,15z?entry=ttu" CVScreenId="f2c975d9-8593-4dc7-b3dc-68e6314a63ae" CvTextArea="119, 174, 130, 17" CvTextArgument="Search Google Maps" CvType="Text" DesignTimeRectangle="120, 170, 246, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='searchboxinput' tag='INPUT' aaname='Search Google Maps' /&gt;" FuzzySelectorArgument="&lt;webctrl id='searchboxinput' tag='INPUT' aaname='Search Google Maps' type='' class='fontBodyMedium searchboxinput xiQnY ' /&gt;" Guid="e553fb61-2925-47c0-904e-77ac7e749804" InformativeScreenshot="29dcdf6fba8cda902252335e792c7002.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Google Maps' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
@@ -202,16 +203,16 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NCheckState DisplayName="Check App State 'DirectionsSaveNearby…'" sap:VirtualizedContainerService.HintSize="1000,733" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Location available'" sap:VirtualizedContainerService.HintSize="1000,733" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="856153ab-3e61-4ed9-b969-e1fd535a7013" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;))]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,491" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                <Sequence DisplayName="Target appears : LocationPage" sap:VirtualizedContainerService.HintSize="496,491" sap2010:WorkflowViewState.IdRef="Sequence_23">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NGetUrl CurrentUrl="[io_ToCoordinates]" DelayBefore="5" DisplayName="Get URL" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="NGetUrl_5" Version="V3" />
-                  <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <uix:NGetUrl CurrentUrl="[io_ToCoordinates]" DelayBefore="5" DisplayName="Get URL : To location" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="NGetUrl_5" Version="V3" />
+                  <Assign DisplayName="Assign : To location coordinates" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[io_ToLocation]</OutArgument>
                     </Assign.To>
@@ -219,18 +220,18 @@
                       <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(io_ToCoordinates,"(?&lt;=@)\S+(?=,17z)").Value]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[io_ToLocation]" />
+                  <ui:LogMessage DisplayName="Log Message : To location coordinates" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[io_ToLocation]" />
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                <Sequence DisplayName="Target does not appear  : LocationPage" sap:VirtualizedContainerService.HintSize="450,380" sap2010:WorkflowViewState.IdRef="Sequence_24">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Google map location not loading&quot;]" />
-                  <Throw Exception="[new SystemException(&quot;LocationNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                  <ui:LogMessage DisplayName="Log Message : Location not available" sap:VirtualizedContainerService.HintSize="388,175" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Google map location not loading&quot;]" />
+                  <Throw DisplayName="Throw : Location not available" Exception="[new SystemException(&quot;LocationNotLoading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_4" />
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>

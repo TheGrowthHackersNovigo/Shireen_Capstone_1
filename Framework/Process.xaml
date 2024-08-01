@@ -149,7 +149,6 @@
       <Variable x:TypeArguments="x:String" Name="PrimeSedan" />
       <Variable x:TypeArguments="x:String" Name="PrimeSUV" />
       <Variable x:TypeArguments="s:Object[]" Name="OlaDetails" />
-      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_OlaCarDetails" />
       <Variable x:TypeArguments="x:String" Name="OlaCarDetails" />
     </Sequence.Variables>
@@ -180,14 +179,14 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="UberOperations - Invoke Workflow File (UberOperations.xaml)" sap:VirtualizedContainerService.HintSize="354,204" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflow\UberOperations.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="FromLocation">[FromLocation]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="ToLocation">[ToLocation]</InArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="UberGo">[UberGo]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="Premeir">[Premeir]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="UberXL">[UberXL]</InOutArgument>
-        <InOutArgument x:TypeArguments="s:Object[]" x:Key="UberDetails">[UberDetails]</InOutArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_UberData">[io_dt_UberData]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FromLocation">[FromLocation]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ToLocation">[ToLocation]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_UberGo">[UberGo]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_Premeir">[Premeir]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_UberXL">[UberXL]</InOutArgument>
+        <InOutArgument x:TypeArguments="s:Object[]" x:Key="io_UberDetails">[UberDetails]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -200,13 +199,13 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dt_OlaCarDetails">[dt_OlaCarDetails]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="OlaCarDetails">[OlaCarDetails]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="Mini">[Mini]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="PrimeSedan">[PrimeSedan]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="PrimeSUV">[PrimeSUV]</InOutArgument>
-        <InOutArgument x:TypeArguments="s:Object[]" x:Key="OlaDetails">[OlaDetails]</InOutArgument>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_OlaData">[io_dt_OlaData]</InOutArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_OlaCarDetails">[dt_OlaCarDetails]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_OlaCarDetails">[OlaCarDetails]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_Mini">[Mini]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_PrimeSedan">[PrimeSedan]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_PrimeSUV">[PrimeSUV]</InOutArgument>
+        <InOutArgument x:TypeArguments="s:Object[]" x:Key="io_OlaDetails">[OlaDetails]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
